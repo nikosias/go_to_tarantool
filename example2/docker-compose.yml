@@ -1,0 +1,187 @@
+services:
+  route-1-1:
+    container_name: route-1-1
+    hostname: route-1-1
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-1-1
+    ports:
+      -  3201:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  route-1-2:
+    container_name: route-1-2
+    hostname: route-1-2
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-1-2
+    ports:
+      -  3202:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  route-2-1:
+    container_name: route-2-1
+    hostname: route-2-1
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-2-1
+    ports:
+      -  3203:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  route-2-2:
+    container_name: route-2-2
+    hostname: route-2-2
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-2-2
+    ports:
+      -  3204:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  route-3-1:
+    container_name: route-3-1
+    hostname: route-3-1
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-3-1
+    ports:
+      -  3205:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  route-3-2:
+    container_name: route-3-2
+    hostname: route-3-2
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-3-2
+    ports:
+      -  3206:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  route-4-1:
+    container_name: route-4-1
+    hostname: route-4-1
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-4-1
+    ports:
+      -  3207:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  route-4-2:
+    container_name: route-4-2
+    hostname: route-4-2
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=route-4-2
+    ports:
+      -  3208:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./router.lua:/opt/tarantool/router.lua
+    networks:
+      - cache
+
+  storage-1-1:
+    container_name: storage-1-1
+    hostname: storage-1-1
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=storage-1-1
+    ports:
+      -  3401:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./storage.lua:/opt/tarantool/storage.lua
+    networks:
+      - cache
+
+
+  storage-1-2:
+    container_name: storage-1-2
+    hostname: storage-1-2
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=storage-1-2
+    ports:
+      -  3402:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./storage.lua:/opt/tarantool/storage.lua
+    networks:
+      - cache
+
+
+  storage-2-1:
+    container_name: storage-2-1
+    hostname: storage-2-1
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=storage-2-1
+    ports:
+      -  3403:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./storage.lua:/opt/tarantool/storage.lua
+    networks:
+      - cache
+
+
+  storage-2-2:
+    container_name: storage-2-2
+    hostname: storage-2-2
+    image: tarantool.local
+    environment:
+      - TT_INSTANCE_NAME=storage-2-2
+    ports:
+      -  3404:3301
+    volumes:
+      - ./config.yml:/opt/tarantool/config.yml
+      - ./files:/var/lib/tarantool/sys_env/default:rw
+      - ./storage.lua:/opt/tarantool/storage.lua
+    networks:
+      - cache
+
+networks:
+  cache:
+    external: true

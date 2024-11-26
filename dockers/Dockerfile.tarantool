@@ -1,0 +1,11 @@
+FROM tarantool/tarantool:3.2.1
+EXPOSE 3301 6081
+WORKDIR /opt/tarantool
+RUN apt update && \
+    apt install -y git gcc cmake unzip
+
+RUN tt rocks install http && \
+    tt rocks install vshard  && \
+    tt rocks install crud
+
+CMD [ "tarantool","--config", "./config.yml" ]

@@ -1,0 +1,9 @@
+- labels:
+    job: tarantool
+  targets:
+    - localhost:8081
+    - localhost:8082
+    - localhost:8091
+    - localhost:8092
+    - localhost:8093
+    - localhost:8094

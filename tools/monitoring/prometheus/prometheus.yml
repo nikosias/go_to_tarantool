@@ -1,0 +1,38 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 15s
+
+remote_write:
+  - url: "http://localhost:9090/api/v1/write"
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: "singletarntool"
+    static_configs:
+      - targets: 
+        - "instance001:6081"
+        - "instance002:6081"
+
+  - job_name: "vshard"
+    static_configs:
+      - targets: 
+        - "route-1-1:6081"
+        - "route-1-2:6081"
+        - "route-2-1:6081"
+        - "route-2-2:6081"
+        - "route-3-1:6081"
+        - "route-3-2:6081"
+        - "route-4-1:6081"
+        - "route-4-2:6081"
+        - "storage-1-1:6081"
+        - "storage-1-2:6081"
+        - "storage-2-1:6081"
+        - "storage-2-2:6081"
+
+  - job_name: "singlego"
+    static_configs:
+      - targets: 
+        - "go001:7081"

@@ -1,0 +1,97 @@
+credentials:
+  users:
+    replicator:
+      password: 'topsecret'
+      roles: [replication, sharding, super]
+    example_user:
+      password: 'example_password'
+      roles: [super]
+
+iproto:
+  advertise:
+    peer:
+      login: replicator
+
+replication:
+  failover: election
+
+sharding:
+  bucket_count: 10000
+
+groups:
+  routers:
+    sharding:
+      roles:
+        - router
+    roles:
+      - roles.crud-router
+      - router
+    replicasets:
+      route-1:
+        instances:
+          route-1-1:
+            iproto:
+              listen:
+              - uri: 'route-1-1:3301'
+          route-1-2:
+            iproto:
+              listen:
+              - uri: 'route-1-2:3301'
+      route-2:
+        instances:
+          route-2-1:
+            iproto:
+              listen:
+              - uri: 'route-2-1:3301'
+          route-2-2:
+            iproto:
+              listen:
+              - uri: 'route-2-2:3301'
+      route-3:
+        instances:
+          route-3-1:
+            iproto:
+              listen:
+              - uri: 'route-3-1:3301'
+          route-3-2:
+            iproto:
+              listen:
+              - uri: 'route-3-2:3301'
+      route-4:
+        instances:
+          route-4-1:
+            iproto:
+              listen:
+              - uri: 'route-4-1:3301'
+          route-4-2:
+            iproto:
+              listen:
+              - uri: 'route-4-2:3301'
+  storages:
+    sharding:
+      roles:
+        - storage
+    roles:
+      - roles.crud-storage
+      - storage
+    replicasets:
+      storage-1:
+        instances:
+          storage-1-1:
+            iproto:
+              listen:
+              - uri: 'storage-1-1:3301'
+          storage-1-2:
+            iproto:
+              listen:
+              - uri: 'storage-1-2:3301'
+      storage-2:
+        instances:
+          storage-2-1:
+            iproto:
+              listen:
+              - uri: 'storage-2-1:3301'
+          storage-2-2:
+            iproto:
+              listen:
+              - uri: 'storage-2-2:3301'

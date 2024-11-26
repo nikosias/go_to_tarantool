@@ -1,0 +1,31 @@
+app:
+  file: 'init.lua'
+
+credentials:
+  users:
+    replicator:
+      password: 'topsecret'
+      roles: [replication]
+
+    example_user:
+      password: 'example_password'
+      roles: [super]
+
+iproto:
+  advertise:
+    peer:
+      login: replicator
+
+replication:
+  failover: manual
+
+groups:
+  group001:
+    replicasets:
+      replicaset001:
+        leader: instance001
+        instances:
+          instance001:
+            iproto:
+              listen:
+              - uri: 'instance001:3301'
